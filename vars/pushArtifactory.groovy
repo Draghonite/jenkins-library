@@ -1,5 +1,5 @@
 def call(Map params) {
-    echo "pushArtifactory called! $params ${params} params.ARTIFACTORY_CREDS_ID params.ARTIFACTORY_SERVER"
+    echo "pushArtifactory called! $params ${params} ${params.BUILD_ENV} params.ARTIFACTORY_SERVER"
     sh ''' echo "pushArtifactory called! $params ${params} params.ARTIFACTORY_CREDS_ID params.ARTIFACTORY_SERVER" '''
     // withCredentials([usernameColonPassword(credentialsId: $params.ARTIFACTORY_CREDS_ID, variable: 'ARTIFACTORY_USER_PASS')]) {
     //     sh '''

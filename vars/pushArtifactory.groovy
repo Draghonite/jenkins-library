@@ -1,5 +1,5 @@
-def call(ARTIFACTORY_CREDS_ID, ARTIFACTORY_SERVER) {
-        echo "pushArtifactory called! ${ARTIFACTORY_CREDS_ID} ${ARTIFACTORY_SERVER}"
+def call(Map params) {
+        echo "pushArtifactory called! ${params.ARTIFACTORY_CREDS_ID} ${params.ARTIFACTORY_SERVER}"
 // ARTIFACTORY_CREDS_ID, ARTIFACTORY_SERVER, PACKAGE_PATH, PACKAGE_NAME, BUILD_ENV, BUILD_PREFIX, BUILD_NUMBER, REPO="libs-release-local"
 /*
     withCredentials([usernameColonPassword(credentialsId: $ARTIFACTORY_CREDS_ID, variable: 'ARTIFACTORY_USER_PASS')]) {

@@ -1,4 +1,4 @@
-def call() {
+def call(ARTIFACTORY_CREDS_ID) {
         echo "pushArtifactory called!"
 // ARTIFACTORY_CREDS_ID, ARTIFACTORY_SERVER, PACKAGE_PATH, PACKAGE_NAME, BUILD_ENV, BUILD_PREFIX, BUILD_NUMBER, REPO="libs-release-local"
 /*

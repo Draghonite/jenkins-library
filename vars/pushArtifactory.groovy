@@ -7,5 +7,4 @@ def call(Map params) {
                 "$params.ARTIFACTORY_SERVER/$params.REPO/$params.PACKAGE_NAME-$params.BUILD_ENV/$params.PACKAGE_NAME-$params.BUILD_ENV-$params.BUILD_PREFIX.$params.BUILD_NUMBER.zip"
         '''
     }
-*/
 }

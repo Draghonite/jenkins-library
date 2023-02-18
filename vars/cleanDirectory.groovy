@@ -1,3 +1,3 @@
-def call(String directory) {
-    sh "rm -rf ${directory}"
+def call(Map params) {
+    sh "rm -rf ${params.DIRECTORY}"
 }

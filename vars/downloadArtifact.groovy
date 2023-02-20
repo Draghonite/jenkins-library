@@ -6,6 +6,6 @@ def call(Map params) {
         // dir('/packages') {
         //     stash(name: 'artifactstash', includes: '/packages/.')
         // }
-        stash name: 'artifactstash', includes: '/packages/**'
+        stash name: 'artifactstash', includes: '/packages/reactivities-client-dev-1.0.226.tar.gz'
     }
 }

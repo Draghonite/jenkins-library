@@ -1,4 +1,5 @@
 def call(Map params) {
+    // TODO: also need a way to change the environment (AWS Account) based on params.DEPLOY_ENV -- 
     withCredentials([string(credentialsId: 'AWS_ACCESS_KEY_ID', variable: 'AWS_ACCESS_KEY_ID')]) {
         withCredentials([string(credentialsId: 'AWS_SECRET_ACCESS_KEY', variable: 'AWS_SECRET_ACCESS_KEY')]) {
             sh '''

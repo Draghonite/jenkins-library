@@ -11,15 +11,14 @@ def call(Map params) {
             dir('./artifacts') {
                 unstash 'artifactstash'
             }
-            sh '''
+            // TODO: fix 'cdktf deploy' results in ERROR Raw mode is not supported on the current process.stdin
+            sh """
                 cd ./artifacts
                 mkdir ./release && cd ./release
-                tar -xzvf ../$PACKAGE_NAME .
+                tar -xzvf ../${params.PACKAGE_NAME} .
                 cdktf deploy --auto-deploy
-            '''
-            // TODO: fix 'cdktf deploy' results in ERROR Raw mode is not supported on the current process.stdin
-            sh "echo TODO: Deploy the ${BUILD_ENV} build to ${DEPLOY_ENV}."
-            sh "./artifacts"
+                echo TODO: Deployed the ${params.BUILD_ENV} build to ${params.DEPLOY_ENV}.
+            """
         }
     }
 }

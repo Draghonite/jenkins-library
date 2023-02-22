@@ -16,7 +16,7 @@ def call(Map params) {
                 cd ./artifacts
                 rm -rf ./release && mkdir ./release && cd ./release
                 tar -xzvf ../${params.PACKAGE_NAME} .
-                cdktf deploy --auto-deploy
+                cdktf deploy --auto-approve
                 echo Deployed the ${params.BUILD_ENV} build to ${params.DEPLOY_ENV}.
             """
         }

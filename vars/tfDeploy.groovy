@@ -19,10 +19,9 @@ def call(Map params) {
             dir('./artifacts') {
                 unstash 'artifactstash'
             }
-            input message='validate artifact unstash, done?'
             sh """
                 cd ./artifacts && mkdir ./release && cd ./release
-                tar -xzvf ../${params.PACKAGE_NAME} .
+                tar -xzvf ../${params.PACKAGE_NAME}
                 terraform init -input=false -no-color plan.file
             #    AWS_REGION=${params.AWS_REGION} AWS_AVAILABILITY_ZONE=${AWS_AVAILABILITY_ZONE} AWS_BUNDLE_ID=${AWS_BUNDLE_ID} DEPLOY_ENV=${params.DEPLOY_ENV} \
             #        terraform plan -input=false -compact-warnings plan.file

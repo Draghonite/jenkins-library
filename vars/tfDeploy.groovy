@@ -22,7 +22,7 @@ def call(Map params) {
             sh """
                 cd ./artifacts && mkdir ./release && cd ./release
                 tar -xzvf ../${params.PACKAGE_NAME} .
-                ls
+                ls -la
                 terraform init -no-color -input=false -compact-warnings
             #    AWS_REGION=${params.AWS_REGION} AWS_AVAILABILITY_ZONE=${AWS_AVAILABILITY_ZONE} AWS_BUNDLE_ID=${AWS_BUNDLE_ID} DEPLOY_ENV=${params.DEPLOY_ENV} \
             #        terraform plan -input=false -compact-warnings plan.file

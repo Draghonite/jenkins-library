@@ -1,6 +1,7 @@
 def call(Map params) {
     withCredentials([string(credentialsId: "AWS_ACCESS_KEY_ID_${params.DEPLOY_ENV}", variable: 'AWS_ACCESS_KEY_ID')]) {
         withCredentials([string(credentialsId: "AWS_SECRET_ACCESS_KEY_${params.DEPLOY_ENV}", variable: 'AWS_SECRET_ACCESS_KEY')]) {
+            // TODO: use a var file instead 
             def AWS_AVAILABILITY_ZONE = "${params.AWS_REGION}a";
             def AWS_BUNDLE_ID = "nano_2_0";
             switch (params.DEPLOY_ENV) {

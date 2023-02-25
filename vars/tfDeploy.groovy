@@ -25,7 +25,7 @@ def call(Map params) {
                 AWS_REGION=${params.AWS_REGION} AWS_AVAILABILITY_ZONE=${AWS_AVAILABILITY_ZONE} AWS_BUNDLE_ID=${AWS_BUNDLE_ID} DEPLOY_ENV=${params.DEPLOY_ENV} \
                     terraform plan -input=false -compact-warnings -out=plan.file
                 AWS_REGION=${params.AWS_REGION} AWS_AVAILABILITY_ZONE=${AWS_AVAILABILITY_ZONE} AWS_BUNDLE_ID=${AWS_BUNDLE_ID} DEPLOY_ENV=${params.DEPLOY_ENV} \
-                    terraform apply -input-false -compact-warnings plan.file
+                    terraform apply -input=false -compact-warnings plan.file
                 echo Deployed the ${params.BUILD_ENV} build to ${params.DEPLOY_ENV}.
             """
         }

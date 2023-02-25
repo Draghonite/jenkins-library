@@ -23,7 +23,8 @@ def call(Map params) {
                 #rm -rf ./release && mkdir ./release && cd ./release
                 #tar -xzvf ../${params.PACKAGE_NAME} .
                 # TODO: change to terraform apply
-                #AWS_REGION=${params.AWS_REGION} AWS_AVAILABILITY_ZONE=${AWS_AVAILABILITY_ZONE} AWS_BUNDLE_ID=${AWS_BUNDLE_ID} DEPLOY_ENV=${params.DEPLOY_ENV} cdktf deploy --auto-approve
+                AWS_REGION=${params.AWS_REGION} AWS_AVAILABILITY_ZONE=${AWS_AVAILABILITY_ZONE} AWS_BUNDLE_ID=${AWS_BUNDLE_ID} DEPLOY_ENV=${params.DEPLOY_ENV} \
+                terraform apply --auto-approve
                 echo Deployed the ${params.BUILD_ENV} build to ${params.DEPLOY_ENV}.
             """
             input message="done?"

@@ -21,9 +21,9 @@ def call(Map params) {
             }
             sh """
                 cd ./artifacts && mkdir ./release && cd ./release
-                tar -xzvf ../${params.PACKAGE_NAME}
-                cd cdktf.out/stacks/reactivities-cdktf
-                terraform init -input=false -no-color plan.file
+                tar -xzvf ../${params.PACKAGE_NAME} .
+                ls
+                terraform init -no-color -input=false -compact-warnings
             #    AWS_REGION=${params.AWS_REGION} AWS_AVAILABILITY_ZONE=${AWS_AVAILABILITY_ZONE} AWS_BUNDLE_ID=${AWS_BUNDLE_ID} DEPLOY_ENV=${params.DEPLOY_ENV} \
             #        terraform plan -input=false -compact-warnings plan.file
                 AWS_REGION=${params.AWS_REGION} AWS_AVAILABILITY_ZONE=${AWS_AVAILABILITY_ZONE} AWS_BUNDLE_ID=${AWS_BUNDLE_ID} DEPLOY_ENV=${params.DEPLOY_ENV} \

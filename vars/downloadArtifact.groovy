@@ -1,5 +1,5 @@
 def call(Map params) {
-    withCredentials([usernameColonPassword(credentialsId: params.ARTIFACTORY_CREDS_ID, variable: 'ARTIFACTORY_USER_PASS')]) {
+    // withCredentials([usernameColonPassword(credentialsId: params.ARTIFACTORY_CREDS_ID, variable: 'ARTIFACTORY_USER_PASS')]) {
         sh "echo [downloadArtifact] trying to run"
         // sh "apk add curl"
         // sh "rm -rf ./artifacts && mkdir ./artifacts"
@@ -8,5 +8,5 @@ def call(Map params) {
         //     stash(name: 'artifactstash')
         // }
         // sh "rm -rf ./artifacts"
-    }
+    // }
 }

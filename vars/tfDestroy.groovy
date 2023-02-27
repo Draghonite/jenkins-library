@@ -14,7 +14,7 @@ def call(Map params) {
                 terraform init -no-color -input=false -compact-warnings
 
                 echo Loading Terraform state remotely if exists
-                AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} AWS_DEFAULT_REGION=${params.AWS_REGION} aws s3 cp ${params.TF_STATE_S3_BUCKET_URL} terraform.tfstate --quiet
+                (AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} AWS_DEFAULT_REGION=${params.AWS_REGION} aws s3 cp ${params.TF_STATE_S3_BUCKET_URL} terraform.tfstate --quiet || exit 0) 
                 
                 #TDOO: use a parameter file with a '_dev', '_qa' or '_prod' suffix replaced w/ params.DEPLOY_ENV
                 TF_VAR_region=${params.AWS_REGION} \

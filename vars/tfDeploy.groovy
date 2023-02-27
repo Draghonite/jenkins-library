@@ -16,6 +16,7 @@ def call(Map params) {
                 echo Loading Terraform state remotely if exists
                 (AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} AWS_DEFAULT_REGION=${params.AWS_REGION} aws s3 cp ${params.TF_STATE_S3_BUCKET_URL} terraform.tfstate --quiet || exit 0) 
                 
+                # TODO: environment variable region is currently not overriding var-file value and/or default value -- important it does
                 TF_VAR_region=${params.AWS_REGION} \
                 TF_VAR_deploy_env=${params.DEPLOY_ENV} \
                 TF_VAR_app_name=${params.APPLICATION_NAME} \

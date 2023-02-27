@@ -16,11 +16,10 @@ def call(Map params) {
                 echo Loading Terraform state remotely if exists
                 (AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} AWS_DEFAULT_REGION=${params.AWS_REGION} aws s3 cp ${params.TF_STATE_S3_BUCKET_URL} terraform.tfstate --quiet || exit 0) 
                 
-                #TDOO: use a parameter file with a '_dev', '_qa' or '_prod' suffix replaced w/ params.DEPLOY_ENV
                 TF_VAR_region=${params.AWS_REGION} \
                 TF_VAR_deploy_env=${params.DEPLOY_ENV} \
                 TF_VAR_app_name=${params.APPLICATION_NAME} \
-                terraform apply -input=false -auto-approve -compact-warnings
+                terraform apply -var-file=public-${params.DEPLOY_ENV}.tf-vars -input=false -auto-approve -compact-warnings
 
                 echo Deployed the ${params.BUILD_ENV} build to ${params.DEPLOY_ENV}.
 

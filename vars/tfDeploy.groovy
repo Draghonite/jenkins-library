@@ -19,7 +19,7 @@ def call(Map params) {
                 TF_VAR_region=${params.AWS_REGION} \
                 TF_VAR_deploy_env=${params.DEPLOY_ENV} \
                 TF_VAR_app_name=${params.APPLICATION_NAME} \
-                terraform apply -var-file=public-${params.DEPLOY_ENV}.tf-vars -input=false -auto-approve -compact-warnings
+                terraform apply -var-file=public-${params.DEPLOY_ENV}.tf-vars -input=false -no-color -auto-approve -compact-warnings
 
                 echo Deployed the ${params.BUILD_ENV} build to ${params.DEPLOY_ENV}.
 
